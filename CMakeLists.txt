@@ -9,6 +9,12 @@ add_test(t2 src/calculator sub 3 -2)
 add_test(t3 src/calculator mul 5 5)
 add_test(t4 src/calculator div 1 5)
 enable_testing()
-add_subdirectory(lib)
-add_executable(calculator main.c)
-target_link_libraries(calculator lib)
+add_test(
+    NAME test_carre
+    COMMAND calculator car 5
+)
+
+set_tests_properties(
+    test_carre
+    PROPERTIES PASS_REGULAR_EXPRESSION "25"
+)
